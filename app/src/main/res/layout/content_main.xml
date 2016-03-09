@@ -57,7 +57,7 @@
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:ems="10"
-        android:id="@+id/editText"
+        android:id="@+id/etRatePerPeriod"
         android:layout_below="@+id/tvRatePerPeriod"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
@@ -68,7 +68,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Number of Periods"
         android:id="@+id/tvNumberOfPeriods"
-        android:layout_below="@+id/editText"
+        android:layout_below="@+id/etRatePerPeriod"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -89,7 +89,8 @@
         android:id="@+id/btnCalculate"
         android:layout_below="@+id/etNumberOfPeriods"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:onClick="calculateFutureAnnuity" />
 
     <TextView
         android:layout_width="wrap_content"

@@ -5,9 +5,15 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
+
+import java.text.DecimalFormat;
+
+import edu.westga.cs6242.patrickdeaninvestmentcalculator.model.InvestmentCalculator;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -48,5 +54,24 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void calculateFutureAnnuity(View view) {
+        EditText PeriodicPayment = (EditText) this.findViewById(R.id.etPeriodicPayment);
+        EditText RatePerPeriod = (EditText) this.findViewById(R.id.etRatePerPeriod);
+        EditText NumberOfPeriods = (EditText) this.findViewById(R.id.etNumberOfPeriods);
+        TextView Results = (TextView) this.findViewById(R.id.tvResults);
+        try
+        {
+            InvestmentCalculator fvc =
+                    new InvestmentCalculator(Double.parseDouble(PeriodicPayment.getText().toString()),
+                            Double.parseDouble(RatePerPeriod.getText().toString()),
+                            Integer.parseInt(NumberOfPeriods.getText().toString()));
+            DecimalFormat df = new DecimalFormat();
+            df.setMaximumFractionDigits(2);
+            Results.setText("$" + df.format(fvc.calculateFutureValueOfAnAnnuity()));
+        } catch (Exception e) {
+            Results.setText("An error occured and the calculation \ncould not be performed.");
+        }
     }
 }
