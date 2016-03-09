@@ -19,6 +19,46 @@ public class MainActivityTest extends ActivityInstrumentationTestCase2<MainActiv
         assertNotNull(a);
     }
 
+    public void testCalculateFutureValueActionError() {
+        MainActivity a = getActivity();
+        final EditText PeriodicPayment = (EditText) a.findViewById(R.id.etPeriodicPayment);
+        final EditText RatePerPeriod = (EditText) a.findViewById(R.id.etRatePerPeriod);
+        final EditText NumberOfPeriods = (EditText) a.findViewById(R.id.etNumberOfPeriods);
+        TextView Results = (TextView) a.findViewById(R.id.tvResults);
+        getInstrumentation().runOnMainSync(new Runnable() {
+            @Override
+            public void run() {
+                PeriodicPayment.requestFocus();
+            }
+        });
+        getInstrumentation().waitForIdleSync();
+        getInstrumentation().sendStringSync("0");
+        getInstrumentation().waitForIdleSync();
+        getInstrumentation().runOnMainSync(new Runnable() {
+            @Override
+            public void run() {
+                RatePerPeriod.requestFocus();
+            }
+        });
+        getInstrumentation().waitForIdleSync();
+        getInstrumentation().sendStringSync("0.02");
+        getInstrumentation().waitForIdleSync();
+        getInstrumentation().runOnMainSync(new Runnable() {
+            @Override
+            public void run() {
+                NumberOfPeriods.requestFocus();
+            }
+        });
+        getInstrumentation().waitForIdleSync();
+        getInstrumentation().sendStringSync("5");
+        getInstrumentation().waitForIdleSync();
+        Button btn = (Button) a.findViewById(R.id.btnCalculate);
+        TouchUtils.clickView(this, btn);
+        String results = Results.getText().toString();
+        assertEquals("An error occured and the calculation could\n" +
+                " not be performed.", results);
+    }
+
     public void testCalculateFutureValueAction() {
         MainActivity a = getActivity();
         final EditText PeriodicPayment = (EditText) a.findViewById(R.id.etPeriodicPayment);
