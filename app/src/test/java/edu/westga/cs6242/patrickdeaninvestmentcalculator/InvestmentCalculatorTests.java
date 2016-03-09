@@ -1,11 +1,11 @@
 package edu.westga.cs6242.patrickdeaninvestmentcalculator;
 
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
 
 import edu.westga.cs6242.patrickdeaninvestmentcalculator.model.InvestmentCalculator;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 /**
  * To work on unit tests, switch the Test Artifact in the Build Variants view.
@@ -37,12 +37,39 @@ public class InvestmentCalculatorTests {
     /**
      * Testing for exceptions
      */
-    public final ExpectedException exception = ExpectedException.none();
     @Test
     public void investmentCalculator_CalculateThrowsException() throws Exception {
-        exception.expect(Exception.class);
-        InvestmentCalculator i = new InvestmentCalculator(0, .05, 36);
-        i.calculateFutureValueOfAnAnnuity();
+        try {
+            InvestmentCalculator i = new InvestmentCalculator(0, .05, 36);
+            fail();
+        } catch (Exception iae) {
+            assertEquals(true, true);
+        }
+    }
 
+    /**
+     * Testing for exceptions
+     */
+    @Test
+    public void investmentCalculator_CalculateThrowsException2() throws Exception {
+        try {
+            InvestmentCalculator i = new InvestmentCalculator(0, .05, 36);
+            fail();
+        } catch (Exception iae) {
+            assertEquals(true, true);
+        }
+    }
+
+    /**
+     * Testing for exceptions
+     */
+    @Test
+    public void investmentCalculator_CalculateThrowsException3() throws Exception {
+        try {
+            InvestmentCalculator i = new InvestmentCalculator(0, .05, 36);
+            fail();
+        } catch (Exception iae) {
+            assertEquals(true, true);
+        }
     }
 }

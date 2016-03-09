@@ -14,7 +14,7 @@ public class InvestmentCalculator {
 
     public InvestmentCalculator(double _periodicPayment,
                                 double _ratePerPeriod,
-                                int    _numberOfPeriods) {
+                                int    _numberOfPeriods) throws IllegalArgumentException {
         this.dblNumberOfPeriods = _numberOfPeriods;
         this.dblPeriodicPayment = _periodicPayment;
         this.dblRatePerPeriod   = _ratePerPeriod;
@@ -26,7 +26,7 @@ public class InvestmentCalculator {
         if (this.dblNumberOfPeriods < 1) {
             return false;
         }
-        if (this.dblPeriodicPayment < 0)
+        if (this.dblPeriodicPayment <= 0)
         {
             return false;
         }
