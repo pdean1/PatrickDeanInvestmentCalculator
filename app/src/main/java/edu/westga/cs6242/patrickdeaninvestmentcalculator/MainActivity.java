@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
             df.setMaximumFractionDigits(2);
             Results.setText("$" + df.format(fvc.calculateFutureValueOfAnAnnuity()));
         } catch (Exception e) {
-            Results.setText("An error occured and the calculation \ncould not be performed.");
+            Results.setText("An error occured and the calculation could\n not be performed.");
         }
     }
 }
